@@ -3,13 +3,13 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-var mainWindow = null;
+let mainWindow = null;
 
 
 app.on('window-all-closed', function() {
-  // if (process.platform != 'darwin') {
-  //   app.quit();
-  // }
+  if (process.platform != 'darwin') {
+    app.quit();
+  }
   app.quit();
 });
 
@@ -20,8 +20,14 @@ app.on('ready', function() {
     height: 600,
     frame: false
   });
+
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
+  
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools();
+
 });
