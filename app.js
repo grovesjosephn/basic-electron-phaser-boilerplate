@@ -26,8 +26,8 @@ app.on('ready', function() {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
-  
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
 });
